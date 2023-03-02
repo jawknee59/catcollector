@@ -7,5 +7,6 @@ urlpatterns = [
     # the name='home' kwarg gives the route a name
     # naming routes is optional, but best practices 
     path('', views.home, name='home'),
-    path('about/', views.about, name='about')
+    path('about/', views.about, name='about'),
+    path('cats/', views.cats_index, name='index'),
 ]
