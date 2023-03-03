@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Cat
 
 # temporary cats for building templates
@@ -45,3 +44,13 @@ class CatCreate(CreateView):
     # success_url = '/cats/{cat_id}'
     # or, we could redirect to the index page if we want
     # success_url = '/cats'
+    # what django recommends, is adding a get_absolute_url method to the model
+
+class CatUpdate(UpdateView):
+    model = Cat
+    # let's use custom fields to disallow renaming a cat
+    fields = ['breed', 'description', 'age']
+
+class CatDelete(DeleteView):
+    model = Cat
+    success_url = '/cats/'
